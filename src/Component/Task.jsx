@@ -22,10 +22,15 @@ export const Task = () => {
         }
     };
 
-    const deleteHandler = (completeId) => {
-        setTasks((prev)=>{
-            return prev.filter((task)=>task.activity_id!==completeId);
-        });
+    const deleteHandler = async(completeId) => {
+        try{
+            
+            await axios.delete("http://localhost:8080/"+completeId);
+            await fetchTasks();
+        }
+        catch (error){
+            console.log(error);
+        }
     };
 
     const fetchTasks = async () => {
