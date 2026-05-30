@@ -11,7 +11,7 @@ export const Task = () => {
     const addTaskHandler = async(newTask) => {
         try{
             const body = {
-                "activity_id": Math.random,
+                "activity_id": Math.random(),
 		        "todo_description": newTask,
             };
             await axios.post("http://localhost:8080/create",body);
